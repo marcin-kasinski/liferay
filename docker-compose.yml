@@ -1,0 +1,22 @@
+﻿version: '2.1'
+services:
+    liferay:
+        image: liferay/portal:7.2.0-ga1
+        container_name: liferay
+        restart: always
+        #user: root        
+        #logging:
+        #    driver: fluentd
+        #depends_on:
+        #    - postgres
+        environment:
+            - TZ=Europe/Warsaw  
+            - LIFERAY_LOCALES_PERIOD_ENABLED=en_US,pl_PL          
+        volumes:
+            #- /home/ubuntu/pythonrobotenvironment/fluentd/conf/:/fluentd/etc/
+            #- /var/lib/docker/containers/:/var/lib/docker/containers/
+            #- /usr/local/airflow/logs/:/usr/local/airflow/logs/
+            - /tmp/:/tmp/
+        ports:
+            - "8282:8080"
+        #command: webserver
